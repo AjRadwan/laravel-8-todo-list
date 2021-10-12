@@ -34,9 +34,12 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        $request->validate([
+            'title' => 'required|max:200',
+        ]);
         Todo::create($request->all());
+        return redirect()->back()->with('message', 'Todo Created Successfully');
     }
 
     /**
