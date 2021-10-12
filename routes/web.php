@@ -35,7 +35,7 @@ Route::get('todos/edit', [TodoController::class, 'edit']);
 
 
 // using resource
-// Route::resource('todos', TodoController::class)->only([
-//     'index', 'create', 'edit', 'store'
+// Route::resource('todos', TodoController::class)->exepet([
+//     '', '', '', ''
 // ]);
  
