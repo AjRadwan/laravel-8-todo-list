@@ -36,7 +36,7 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -56,9 +56,9 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Todo $todo)
-    {
-        //
+    public function edit(Todo $todo){
+        return view('todos.edit');
+      
     }
 
     /**

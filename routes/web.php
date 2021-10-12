@@ -29,4 +29,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // todos controller
 Route::get('todos', [TodoController::class, 'index']);
 Route::get('todos/create', [TodoController::class, 'create']);
+Route::post('todos/create', [TodoController::class, 'store']);
+Route::get('todos/edit', [TodoController::class, 'edit']);
+ 
+
+
+// using resource
+// Route::resource('todos', TodoController::class)->only([
+//     'index', 'create', 'edit', 'store'
+// ]);
  
