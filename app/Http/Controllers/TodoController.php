@@ -40,13 +40,14 @@ class TodoController extends Controller{
     public function update(TodoRequest $request,Todo $todo){
 
          $todo->update(['title' => $request->title]);
-         return redirect(route('todo.index'))->with('message', 'Updated');
+         return redirect(route('todo.index'))->with('message', 'Task Updated');
     }
 
    
-    public function destroy(Todo $todo){
-        //
-    }
+    public function delete(Todo $todo){
+       $todo->delete();
+       return redirect(route('todo.index'))->with('message', 'Task Deleted');
+      }
 
     public function complete(Todo $todo){
      $todo->update(['completed' => true]);

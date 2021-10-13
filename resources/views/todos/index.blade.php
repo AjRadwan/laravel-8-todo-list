@@ -13,13 +13,17 @@
 <ul class="list-group">
     @foreach ($todos as $todo)
         <li class="list-group-item display-4">
+
         @if ($todo->completed)
+
         <s>{{$todo->title}}</s>
+
         @else
         {{$todo->title}}
         @endif
 
     <a href="{{url('todos/edit')}}/{{$todo->id}}" type="button" class="btn btn-primary mb-2">Edit</a>
+
 
 @if ($todo->completed)
 <a type="button" class="btn btn-danger mb-2"
@@ -42,9 +46,19 @@
    @csrf
    @method('put')
 </form>
-
 @endif
 
+<a type="button" class="btn btn-warning mb-2"
+    onclick="event.preventDefault();
+   if(confirm('Are you really want to Delete?')){
+    document.getElementById('form-delete-{{$todo->id}}').submit()}">Delete</a>
+   
+
+<form method="post" id="{{'form-delete-'.$todo->id}}" 
+    action="{{route('todo.delete',$todo->id)}}" style="display: none">
+    @csrf
+    @method('delete')
+</form>
     @endforeach
 </ul>
 </div>
