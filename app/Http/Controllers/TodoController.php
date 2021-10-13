@@ -5,11 +5,14 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
  
 
+
 class TodoController extends Controller{
     
     public function index(){
-        $todos = Todo::orderBy('completed')->get();
-         return view('todos.index')->with(['todos' => $todos]);
+        $todos = auth()->user()->todos()->orderBy('completed')->get();
+        return view('todos.index')->with(['todos' => $todos]);
+        
+        // $todos = Todo::orderBy('completed')->get();
         //  return view('todos.index', compact('todos'));
    }
  
@@ -21,7 +24,8 @@ class TodoController extends Controller{
 
    
     public function store(TodoRequest $request){
-        Todo::create($request->all());
+        auth()->user()->todos()->create($request->all());
+        // Todo::create($request->all());
         return redirect()->back()->with('message', 'Todo Created Successfully');
     }
 
