@@ -13,18 +13,38 @@
 <ul class="list-group">
     @foreach ($todos as $todo)
         <li class="list-group-item display-4">
-                 
-            {{$todo->title}}
+        @if ($todo->completed)
+        <s>{{$todo->title}}</s>
+        @else
+        {{$todo->title}}
+        @endif
 
     <a href="{{url('todos/edit')}}/{{$todo->id}}" type="button" class="btn btn-primary mb-2">Edit</a>
 
 @if ($todo->completed)
-  <a href="" type="button" class="btn btn-success mb-2">Check</a>
+<a type="button" class="btn btn-danger mb-2"
+    onclick="event.preventDefault();
+    document.getElementById('form-incomplete-{{$todo->id}}').submit()">Completed</a>
+
+<form method="post" id="{{'form-incomplete-'.$todo->id}}" 
+    action="{{route('todo.incomplete',$todo->id)}}" style="display: none">
+    @csrf
+    @method('delete')
+</form>
+
 @else
-   <a href="" type="button" class="btn btn-dark mb-2">Check</a>
+   <a type="button" class="btn btn-success mb-2"
+    onclick="event.preventDefault();
+    document.getElementById('form-complete-{{$todo->id}}').submit()">Check</a>
+
+<form method="post" id="{{'form-complete-'.$todo->id}}" 
+    action="{{route('todo.complete',$todo->id)}}" style="display: none">
+   @csrf
+   @method('put')
+</form>
+
 @endif
- 
-       
+
     @endforeach
 </ul>
 </div>

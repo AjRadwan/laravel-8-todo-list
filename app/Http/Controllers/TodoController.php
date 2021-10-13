@@ -8,7 +8,7 @@ use App\Models\Todo;
 class TodoController extends Controller{
     
     public function index(){
-        $todos = Todo::all();
+        $todos = Todo::orderBy('completed')->get();
          return view('todos.index')->with(['todos' => $todos]);
         //  return view('todos.index', compact('todos'));
    }
@@ -46,5 +46,15 @@ class TodoController extends Controller{
    
     public function destroy(Todo $todo){
         //
+    }
+
+    public function complete(Todo $todo){
+     $todo->update(['completed' => true]);
+     return redirect()->back()->with('message', 'Task Completed');
+    }
+
+    public function incomplete(Todo $todo){
+     $todo->update(['completed' => false]);
+     return redirect()->back()->with('message', 'Task incomplete');
     }
 }
