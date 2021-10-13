@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
-
 <div class="container">
   <h1 class="text-center mb-4">Todolist</h1>
   @include('flash') {{--  this showing flash meessage  --}}
@@ -13,7 +11,9 @@
              <input type="text" class="form-control" name="title">
              </div>
             <button class="btn btn-primary mb-2" type="submit" value="create">Create</button>
-          </form>        
+          </form>       
+          
+          <a href="{{url('todos')}}" type="button" class="btn btn-dark mb-2 ml-3">back</a>
 </div>
 </div>
 @endsection

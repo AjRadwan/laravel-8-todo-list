@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -27,10 +26,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // todos controller
-Route::get('todos', [TodoController::class, 'index']);
+Route::get('todos', [TodoController::class, 'index'])->name('todo.index');
 Route::get('todos/create', [TodoController::class, 'create']);
 Route::post('todos/create', [TodoController::class, 'store']);
-Route::get('todos/edit', [TodoController::class, 'edit']);
+Route::get('todos/edit/{id}', [TodoController::class, 'edit']);
+Route::patch('todos/update/{todo}', [TodoController::class, 'update'])->name('todo.update');
  
 
 
