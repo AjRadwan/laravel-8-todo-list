@@ -6,7 +6,7 @@
   @include('flash') {{--  this showing flash meessage  --}}
 
 <div class="d-flex justify-content-center">
- <form class="form-inline" method="POST" action="{{url('todos/create')}}">
+ <form class="form-inline" method="POST" action="{{route('todo.store')}}">
             @csrf
         <div class="form-group mx-sm-3 mb-2">
              <input type="text" class="form-control" name="title">
@@ -14,7 +14,7 @@
    <button class="btn btn-primary mb-2" type="submit" value="create">Create</button>
 </form>       
           
-<a href="{{url('todos')}}" type="button" class="btn btn-dark mb-2 ml-3">back</a>
+<a href="{{route('todo.index')}}" type="button" class="btn btn-dark mb-2 ml-3">back</a>
 </div>
 </div>
 @endsection

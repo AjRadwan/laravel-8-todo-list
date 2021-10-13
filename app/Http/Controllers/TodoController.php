@@ -44,7 +44,7 @@ class TodoController extends Controller{
     }
 
    
-    public function delete(Todo $todo){
+    public function destroy(Todo $todo){
        $todo->delete();
        return redirect(route('todo.index'))->with('message', 'Task Deleted');
       }

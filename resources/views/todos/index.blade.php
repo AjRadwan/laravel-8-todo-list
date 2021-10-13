@@ -4,7 +4,7 @@
  
 <div class="d-flex justify-content-center mb-5">
     <h1 class="mr-4">Todolist</h1>
-    <a href="{{url('todos/create')}}" type="button" class="btn btn-primary mb-2">Create</a>
+    <a href="{{url('todo/create')}}" type="button" class="btn btn-primary mb-2">Create</a>
 </div>
 @include('flash')
  
@@ -22,7 +22,7 @@
         {{$todo->title}}
         @endif
 
-    <a href="{{url('todos/edit')}}/{{$todo->id}}" type="button" class="btn btn-primary mb-2">Edit</a>
+    <a href="{{route('todo.edit', $todo->id)}}" type="button" class="btn btn-primary mb-2">Edit</a>
 
 
 @if ($todo->completed)
@@ -55,13 +55,12 @@
    
 
 <form method="post" id="{{'form-delete-'.$todo->id}}" 
-    action="{{route('todo.delete',$todo->id)}}" style="display: none">
+    action="{{route('todo.destroy',$todo->id)}}" style="display: none">
     @csrf
     @method('delete')
 </form>
     @endforeach
 </ul>
 </div>
-
 
 @endsection

@@ -15,7 +15,7 @@
         <button class="btn btn-primary mb-2" type="submit" value="update">Update</button>
     </form>       
     
-    <a href="{{url('todos')}}" type="button" class="btn btn-dark mb-2 ml-3">back</a>
+    <a href="{{route('todo.index')}}" type="button" class="btn btn-dark mb-2 ml-3">back</a>
 </div>
 </div>
 @endsection
