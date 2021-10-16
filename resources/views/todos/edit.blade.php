@@ -10,6 +10,11 @@
         @csrf
         @method('patch')
         <div class="form-group mx-sm-3 mb-2">
+          <textarea name="description">
+            {{$todo->description}}
+          </textarea>
+            </div>
+        <div class="form-group mx-sm-3 mb-2">
         <input type="text" class="form-control" value="{{$todo->title}}" name="title">
         </div>
         <button class="btn btn-primary mb-2" type="submit" value="update">Update</button>

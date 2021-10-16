@@ -19,21 +19,15 @@ class TodoController extends Controller{
 
     public function create(){
         return view('todos.create');
-
-    }
+}
 
    
     public function store(TodoRequest $request){
         auth()->user()->todos()->create($request->all());
         // Todo::create($request->all());
-        return redirect()->back()->with('message', 'Todo Created Successfully');
+        return redirect(route('todo.index'))->with('message', 'Todo Created Successfully');
     }
 
-   
-    public function show(Todo $todo)
-    {
-        //
-    }
    
     public function edit($id){
        $todo = Todo::find($id);
@@ -42,7 +36,6 @@ class TodoController extends Controller{
     }
  
     public function update(TodoRequest $request,Todo $todo){
-
          $todo->update(['title' => $request->title]);
          return redirect(route('todo.index'))->with('message', 'Task Updated');
     }
